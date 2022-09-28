@@ -6,7 +6,7 @@ require_relative "player_creation_modules.rb"
 require_relative "world_modules.rb"
 
 class New_Character
-    attr_accessor :name, :race, :_class, :dungeon
+    attr_accessor :name, :race, :_class, :dungeon, :skill
     
     def initialize
         print("WHO ARE YOU? ")
@@ -16,6 +16,7 @@ class New_Character
         print("ARE YOU A ROGUE, WARLOCK, SORCERER? ")
         singleton_ = Player_Creation.set_class(gets)
         @_class = Classes_Seting.new(singleton_)
+        @skill = {walking: [{level: 1, experience: 0, to_next: 100}], talking: [{level: 1, experience: 0, to_next: 100}], fighting: [{level: 1, experience: 0, to_next: 100}]}
         system 'clear'
         system('cls')
         @dungeon = New_Module.new(rand % 100)
